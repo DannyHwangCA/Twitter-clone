@@ -20,5 +20,23 @@ class User < ActiveRecord::Base
                                     format:     { with: VALID_EMAIL_REGEX },
                                     uniqueness: { case_sensitive: false }
 
+  def follow(another_user)
+    active_relationships.create(followed_id: another_user.id)
+  end
+
+  def unfollow(another_user)
+    active_relationships.find_by(followed_id: another_user.id).destroy
+  end
+
 end
+
+
+
+# class User
+#   has_many :followers, class_name: "User", foreign_key: "followee_id"
+
+#   belongs_to :followee, class_name: "User"
+
+# end
+
 
