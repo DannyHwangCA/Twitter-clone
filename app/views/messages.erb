@@ -1,0 +1,9 @@
+<div>
+  <% if session[:errors] %>
+    <p><%= session[:errors] %></p>
+    <%= session[:errors] = nil %>
+  <% elsif session[:success] %>
+    <p><%= session[:success] %></p>
+    <%= session[:success] = nil %>
+  <% end %>
+</div>
