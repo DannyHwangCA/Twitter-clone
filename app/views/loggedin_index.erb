@@ -1,14 +1,15 @@
-<<<<<<< HEAD
-<a href="/user/<%= session[:success] %>/edit">
-=======
+<style>
 
+</style>
+
+
+<a href="/users/<%= session[:user_id] %>/edit">Avatar</a>
+<div class="jumbotron hero-spacer">
 <form action="/users/<%= @user.id %>/posts" method="POST">
-  <input type="text" placeholder="Tweet Here" name="tweet">
-  <input type="submit" value="Tweet">
+  <input type="text" placeholder="Advice Here" name="tweet">
+  <input type="submit" value="Advise">
 </form>
-
-
->>>>>>> 339c5c266b9a845c73507001eb92212724e707be
+</div>
 
   <ul>
     <% @posts.each do |post|%>

@@ -28,8 +28,8 @@ end
 
 patch '/users/:id' do
   @user = User.find(params[:id])
-  user.update_attributes(username: params[:username], email: params[:email], password: params[:password])
-    redirect "/users/#{user.id}" #profile
+  @user.update_attributes(username: params[:username], email: params[:email], password: params[:password])
+    redirect "/users/#{@user.id}"
 end
 
 
