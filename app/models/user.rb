@@ -12,6 +12,30 @@ class User < ActiveRecord::Base
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
+<<<<<<< HEAD
+  include BCrypt
+
+  def password
+    @password ||= Password.new(password_hash) if password_hash.present?
+  end
+
+  def password=(new_password)
+    @password = Password.create(new_password)
+    self.password_hash = @password
+  end
+
+
+  def authenticate(password)
+    self.password == password
+  end
+
+end
+
+
+
+end
+
+=======
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
   before_save {self.email.downcase!}
@@ -22,3 +46,4 @@ class User < ActiveRecord::Base
 
 end
 
+>>>>>>> 7f41032bff8324d15bcb7f56e5264b37f58bb041
