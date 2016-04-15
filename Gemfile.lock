@@ -20,6 +20,8 @@ GEM
       execjs
     backports (3.6.8)
     bcrypt (3.1.11)
+    bcrypt-ruby (3.1.5)
+      bcrypt (>= 3.1.3)
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -96,7 +98,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord (~> 4.2.0)
   activesupport (~> 4.2.0)
-  bcrypt
+  bcrypt-ruby
   bootstrap-sass
   capybara
   factory_girl

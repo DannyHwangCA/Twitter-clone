@@ -1,14 +1,14 @@
 
-
-
-
-
-<% @posts.each do |post|%>
-  <a href= "/users/<%= params[:user_id] %>/posts/<%= params[:post_id] %>"><%= post.content %></a>
-<%end%>
-
-
-<form action="/users/:user_id/posts" method="POST">
-  <input type="text" placeholder="Tweet Here" name="post">
+<form action="/users/<%= @user.id %>/posts" method="POST">
+  <input type="text" placeholder="Tweet Here" name="tweet">
   <input type="submit" value="Tweet">
 </form>
+
+
+
+  <ul>
+    <% @posts.each do |post|%>
+      <li><a href= <%="/users/#{@user.id}" %>><%= @user.username %></a><br><p><%= post.content %></p></li>
+    <%end%>
+  </ul>
+

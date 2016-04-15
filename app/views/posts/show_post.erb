@@ -1,7 +1,7 @@
 <h1><%= @post.content %></h1>
 
 
-<form action="/users/:user_id/posts/:post_id" method="POST">
+<form action="/users/<%= @post.user_id %>/posts/<%= @post.id %>" method="POST">
   <input type="hidden" name="_method" value="patch">
   <input type="text" name="content">
   <input type="submit" value="Edit">
