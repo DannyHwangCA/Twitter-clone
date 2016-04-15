@@ -1,0 +1,17 @@
+<%= erb(:messages) %>
+
+<div>
+  <%if @user.id == session[:user_id] %>
+    <% @user.followers.each do |person| %>
+      <p><a href=<%= "/users/#{person.id}" %>><%= person.username %></a> <a href=<%= "/users/#{@user.id}/unfollow/#{person.id}" %>>delete</a></p>
+      <hr>
+    <% end %>
+  <% else %>
+    <% @user.followers.each do |person| %>
+      <p><a href=<%= "/users/#{person.id}" %>><%= person.username %></a></p>
+      <hr>
+    <% end %>
+  <% end %>
+</div>
+
+

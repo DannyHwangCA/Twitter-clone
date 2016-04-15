@@ -38,11 +38,12 @@ class User < ActiveRecord::Base
   end
 
   def follow(another_user)
-    active_relationships.create(followed_id: another_user.id)
+    self.following << another_user
+    self.following.save
   end
 
   def unfollow(another_user)
-    active_relationships.find_by(followed_id: another_user.id).destroy
+    self.following.find {|person| person == another_user }.destroy
   end
 
 end
