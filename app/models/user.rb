@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include BCrypt
+
   has_many :posts, dependent: :destroy
 
   has_many :active_relationships, class_name: "Relationship",
@@ -19,6 +21,19 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length:     { maximum: 150 },
                                     format:     { with: VALID_EMAIL_REGEX },
                                     uniqueness: { case_sensitive: false }
+
+  def password
+    @password ||= Password.new(password_hash) if password_hash.present?
+  end
+
+  def password=(new_password)
+    @password = Password.create(new_password)
+    self.password_hash = @password
+  end
+
+  def authenticate(password)
+    self.password == password
+  end
 
   def follow(another_user)
     active_relationships.create(followed_id: another_user.id)
