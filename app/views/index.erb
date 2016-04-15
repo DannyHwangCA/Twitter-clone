@@ -1,0 +1,14 @@
+
+<% if session[:user_id] %>
+  <% if session[:success] %>
+    <div style="color: green;">
+      <p><%= session[:success] %></p>
+      <% session[:success] = nil %>
+    </div>
+  <% end %>
+
+  <a href="/users/<%= session[:user_id] %>">
+<% else %>
+  <p> This is index page with no body logged in </p>
+<% end %>
+

@@ -1,0 +1,10 @@
+<h2>Profile Page</h2>
+
+<%= @user.username %>
+<br>
+<%= @user.email %>
+<br>
+
+<form action="/users/<%= @user.id %>/edit" method="get">
+  <input type="submit" value="Edit Profile">
+</form>

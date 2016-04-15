@@ -1,6 +1,13 @@
+<div style="color: red;">
+  <% if session[:errors] %>
+    <p><%= session[:errors][0] %></p>
+    <%session[:errors] = nil%>
+  <%end%>
+</div>
+
 <h2>Join Lil Twitter today.</h2>
 
-<form action="/signup" method="post">
+<form action="/users/new" method="post">
   <br>
   <input type="text" name="username" placeholder="username">
   <br>
@@ -10,3 +17,5 @@
   <br>
   <input type="submit" value="create">
 </form>
+
+

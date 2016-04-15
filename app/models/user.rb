@@ -1,3 +1,5 @@
+require 'BCrypt'
+
 class User < ActiveRecord::Base
   include BCrypt
 
