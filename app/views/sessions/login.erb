@@ -1,15 +1,27 @@
+
+        <header class="jumbotron hero-spacer" style="text-align: center">
+            <h1>MARSHALL</h1>
+        </header>
+
 <div class="container">
-<br>
-<a href="/users/new">Sign Up</a>
 <br><br>
+
+<header class="jumbotron hero-spacer" style="text-align: center">
+<h2>Login</h2>
 <form action="/sessions" method="post">
-  <label for="username"> Username: </label>
-  <input type="text" name="username" />
+  <input type="text" name="username" placeholder="username"/>
   <br>
-  <label for="password"> Password: </label>
-  <input type="password" name="password" />
+  <input type="password" name="password" placeholder="password" />
   <br><br>
-  <input type="submit" value="Login">
+  <input type="submit" value="Sign In" class="btn btn-primary">
+  <br>
+  <h2>or</h2>
+
+<a href="/users/new" class="btn btn-primary">Create Account</a>
+
+        </header>
+
+
 </form>
 
 </div>

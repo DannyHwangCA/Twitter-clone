@@ -1,5 +1,36 @@
-<h2>Join Lil Twitter today.</h2>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Heroic Features - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../css/heroic-features.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<header class="jumbotron hero-spacer" style="text-align: center">
+<h2>Join Lil Twitter today.</h2>
+</header>
+
+<header class="jumbotron hero-spacer" style="text-align: center">
  <form action="/users/<%= @user.id %>" method="post">
    <input type="hidden" value="patch" name="_method">
    <br>
@@ -8,6 +39,8 @@
    <input type="text" name="email" value="<%= @user.email %>">
    <br>
    <input type="password" name="password" value="<%= @user.password %>">
-   <br>
-   <input type="submit" value="Save Changes">
+   <br><br>
+   <input type="submit" class="btn btn-primary"value="Save Changes" >
  </form>
+ </header>
+ </body>
