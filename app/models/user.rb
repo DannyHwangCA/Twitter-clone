@@ -1,7 +1,5 @@
-require 'BCrypt'
-
 class User < ActiveRecord::Base
-  include BCrypt
+
 
   has_many :posts, dependent: :destroy
 
@@ -23,6 +21,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length:     { maximum: 150 },
                                     format:     { with: VALID_EMAIL_REGEX },
                                     uniqueness: { case_sensitive: false }
+
+  include BCrypt
 
   def password
     @password ||= Password.new(password_hash) if password_hash.present?

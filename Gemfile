@@ -14,7 +14,7 @@ gem 'rake'
 
 gem 'shotgun'
 
-gem 'bcrypt'
+gem 'bcrypt-ruby'
 
 gem 'bootstrap-sass'
 
