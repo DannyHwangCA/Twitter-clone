@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include BCrypt
+
   has_many :posts, dependent: :destroy
 
   has_many :active_relationships, class_name: "Relationship",
@@ -12,8 +14,13 @@ class User < ActiveRecord::Base
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
-<<<<<<< HEAD
-  include BCrypt
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+
+  before_save {self.email.downcase!}
+  validates :username, presence: true, length: { maximum: 50 }
+  validates :email, presence: true, length:     { maximum: 150 },
+                                    format:     { with: VALID_EMAIL_REGEX },
+                                    uniqueness: { case_sensitive: false }
 
   def password
     @password ||= Password.new(password_hash) if password_hash.present?
@@ -24,26 +31,27 @@ class User < ActiveRecord::Base
     self.password_hash = @password
   end
 
-
   def authenticate(password)
     self.password == password
+  end
+
+  def follow(another_user)
+    active_relationships.create(followed_id: another_user.id)
+  end
+
+  def unfollow(another_user)
+    active_relationships.find_by(followed_id: another_user.id).destroy
   end
 
 end
 
 
 
-end
+# class User
+#   has_many :followers, class_name: "User", foreign_key: "followee_id"
 
-=======
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+#   belongs_to :followee, class_name: "User"
 
-  before_save {self.email.downcase!}
-  validates :username, presence: true, length: { maximum: 50 }
-  validates :email, presence: true, length:     { maximum: 150 },
-                                    format:     { with: VALID_EMAIL_REGEX },
-                                    uniqueness: { case_sensitive: false }
+# end
 
-end
 
->>>>>>> 7f41032bff8324d15bcb7f56e5264b37f58bb041
